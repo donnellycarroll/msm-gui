@@ -1,4 +1,21 @@
 class MoviesController < ApplicationController
+  
+  def create
+    # {"the_title"=>"1", "the_year"=>"3", "the_duration"=>"", "the_description"=>"r", "the_image"=>"", "the_director_id"=>""}
+
+    m = Movie.new
+    m.title = params.fetch("the_title")
+    m.year = params.fetch("the_year")
+    m.duration = params.fetch("the_duration")
+    m.description = params.fetch("the_description")
+    m.image = params.fetch("the_image")
+    m.director_id = params.fetch("the_director_id")
+
+
+
+  end
+
+  
   def index
     matching_movies = Movie.all
     @list_of_movies = matching_movies.order({ :created_at => :desc })
@@ -14,4 +31,5 @@ class MoviesController < ApplicationController
 
     render({ :template => "movie_templates/show" })
   end
+  
 end
