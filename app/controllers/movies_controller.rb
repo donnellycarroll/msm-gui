@@ -11,6 +11,10 @@ class MoviesController < ApplicationController
     m.image = params.fetch("the_image")
     m.director_id = params.fetch("the_director_id")
 
+    m.save
+
+    redirect_to("/movies")
+
 
 
   end

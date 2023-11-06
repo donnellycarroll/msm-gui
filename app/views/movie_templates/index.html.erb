@@ -33,9 +33,9 @@
     <input id="director_id_field" tyle="text" name="the_director_id">
   </div>
 
-<button>
-Create movie
-</button>
+  <button>
+    Create movie
+  </button>
 
 </form>
 
@@ -89,8 +89,13 @@ Create movie
         <% matching_directors = Director.where({ :id => a_movie.director_id }) %>
 
         <% the_director = matching_directors.at(0) %>
+        <% if the_director == nil%>
+          Uh oh! We weren't able to find a director for this movie.
+        <% else %>
 
-        <%= the_director.name %>
+          <%= the_director.name %>
+        <%end%>
+
       </td>
 
       <td>
